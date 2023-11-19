@@ -1,9 +1,11 @@
+import '../styles/SearchBar.css'
+
 function SearchBar() {
   return (
-    <>
-      <input type="text" />
-      <button>Search</button>
-    </>
+    <div className="search-bar">
+      <input type="text" placeholder='Enter a Song Title' />
+      <button className='search-btn'>Search</button>
+    </div>
   )
 }
 

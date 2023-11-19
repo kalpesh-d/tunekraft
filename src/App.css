@@ -6,3 +6,11 @@ nav {
     justify-content: center;
     align-items: center;
 }
+
+main {
+    height: 100vh;
+    background-image: url(./asset/background_photo_desktop.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

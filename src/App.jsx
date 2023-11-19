@@ -8,7 +8,9 @@ function App() {
       <nav>
         <NavBar />
       </nav>
-      <SearchBar />
+      <main>
+        <SearchBar />
+      </main>
     </>
   )
 }
