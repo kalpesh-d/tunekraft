@@ -1,6 +1,8 @@
+import '../styles/NavBar.css'
+
 function NavBar() {
   return (
-    <h1>Ja<span>mmming</span></h1>
+    <h1 className='title'>Ja<span>mmm</span>ing</h1>
   )
 }
 

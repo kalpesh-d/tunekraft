@@ -5,7 +5,9 @@ import SearchBar from './components/SearchBar'
 function App() {
   return (
     <>
-      <NavBar />
+      <nav>
+        <NavBar />
+      </nav>
       <SearchBar />
     </>
   )
