@@ -5,7 +5,7 @@ import '../styles/SearchResult.css'
 
 function SearchResult() {
   const [ tracks ] = useState([
-    { id: '1', title: 'Dusk Till Dawn', artist: 'Zayn Malik' }, 
+    { id: '1', title: 'Dusk Till Dawn', artist: 'Zayn Malik' },
     { id: '2', title: 'Dusk Till Dawn', artist: 'Zayn Malik' }
   ])
 

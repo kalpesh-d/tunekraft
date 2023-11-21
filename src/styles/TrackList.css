@@ -1,0 +1,22 @@
+.tracklist {
+    overflow-y: auto;
+    max-height: calc(60vh - 4rem);
+}
+
+.tracklist::-webkit-scrollbar {
+    width: 5px;
+}
+  
+.tracklist::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+.tracklist::-webkit-scrollbar-thumb {
+  background: black; 
+  border-radius: 10px;
+}
+
+.tracklist::-webkit-scrollbar-thumb:hover {
+  background: black; 
+}

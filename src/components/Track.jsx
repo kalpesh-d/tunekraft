@@ -7,7 +7,7 @@ function Track({ title, artist }) {
         <h3 className="track-title">{title}</h3>
         <p className="track-artist">{artist}</p>
       </div>
-      <button className='track-plus'>+</button>
+      <button className='track-plus' disabled>+</button>
     </div>
   )
 }
