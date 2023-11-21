@@ -1,8 +1,13 @@
+import '../styles/Track.css'
+
 function Track({ title, artist }) {
   return (
-    <div>
-      <h3>{ title }</h3>
-      <p>{ artist }</p>
+    <div className="track">
+      <div className='track-content'>
+        <h3 className="track-title">{title}</h3>
+        <p className="track-artist">{artist}</p>
+      </div>
+      <button className='track-plus'>+</button>
     </div>
   )
 }

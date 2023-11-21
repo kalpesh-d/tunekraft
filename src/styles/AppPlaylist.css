@@ -1,0 +1,6 @@
+.app-playlist {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+}

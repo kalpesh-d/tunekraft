@@ -1,0 +1,42 @@
+.playlist {
+    color: white;
+    background-color: rgba(0, 12, 64, 0.8);
+    padding: 5rem;
+    height: auto;
+    width: 30rem;
+    border: 2px solid black;
+}
+
+.playlist-name[type=text] {
+    font-size: 2.8rem;
+    font-weight: 500;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    width: 100%;
+    color:white;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+}
+
+.playlist-name[type=text]:focus {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid white;
+}
+
+.savebtn {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+    width: 100%;
+    height: 4rem;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #4b17e8;
+}
+
+.savebtn:hover{
+    background-color: #5d2eea;
+}

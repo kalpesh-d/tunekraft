@@ -1,6 +1,8 @@
 import { useState } from "react"
 import TrackList from "./TrackList"
 
+import '../styles/SearchResult.css'
+
 function SearchResult() {
   const [ tracks ] = useState([
     { id: '1', title: 'Dusk Till Dawn', artist: 'Zayn Malik' }, 
@@ -8,9 +10,10 @@ function SearchResult() {
   ])
 
   return (
-    <>
-      <TrackList tracks={tracks}/>
-    </>
+    <div className="search-result">
+      <h1>Results</h1>
+      <TrackList tracks={tracks} />
+    </div>
   )
 }
 

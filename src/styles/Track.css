@@ -1,0 +1,27 @@
+.track {
+    padding: 1rem 0;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.track-title {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.track-artist {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.track-plus {
+    font-size: 2.5rem;
+    font-weight: 400;
+    padding-right: 0.5rem;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
