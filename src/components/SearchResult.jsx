@@ -1,18 +1,20 @@
-import { useState } from "react"
-import TrackList from "./TrackList"
-
 import '../styles/SearchResult.css'
+import TrackList from "./TrackList"
+import { useEffect, useState } from "react"
+import getAll from '../Services/track';
 
 function SearchResult() {
-  const [ tracks ] = useState([
-    { id: '1', title: 'Dusk Till Dawn', artist: 'Zayn Malik' },
-    { id: '2', title: 'Dusk Till Dawn', artist: 'Zayn Malik' }
-  ])
+  const [searchTrack, setSearchTrack] = useState([]);
+  
+  useEffect(() => {
+    getAll()
+    .then(resp => setSearchTrack(resp.data));
+  }, []);
 
   return (
     <div className="search-result">
       <h1>Results</h1>
-      <TrackList tracks={tracks} />
+      <TrackList searchTrack={searchTrack} />
     </div>
   )
 }

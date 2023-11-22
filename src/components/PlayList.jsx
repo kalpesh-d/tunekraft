@@ -4,11 +4,7 @@ import TrackList from "./TrackList";
 import '../styles/PlayList.css'
 
 function PlayList() {
-  const [playlist, setPlaylist] = useState('Playlist')
-  const [ tracks ] = useState([
-    { id: '1', title: 'One Dance', artist: 'Drake' }, 
-    { id: '2', title: 'One Dance', artist: 'Drake' }
-  ])
+  const [playlist, setPlaylist] = useState('')
 
   const handlePlaylist = (e) => {
     setPlaylist(e.target.value)
@@ -17,8 +13,8 @@ function PlayList() {
   return (
     <div className="playlist">
       <form action="">
-        <input className="playlist-name" type="text" value={playlist} onChange={handlePlaylist} />
-        <TrackList tracks={tracks} />
+        <input className="playlist-name" type="text" placeholder="Enter Playlist Name" value={playlist} onChange={handlePlaylist} />
+        <TrackList />
         <button className="savebtn" disabled>save to spotify</button>
       </form>
     </div>

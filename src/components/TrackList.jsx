@@ -2,12 +2,16 @@ import Track from './Track'
 
 import '../styles/TrackList.css'
 
-function TrackList({ tracks }) {
+function TrackList({ searchTrack }) {
   return (
     <div className='tracklist'>
-      { tracks.map(track => (
-          <Track key={track.id} title={track.title} artist={track.artist} />
-      ))}
+      { 
+        searchTrack && searchTrack.map(
+          track => ( 
+            <Track key={track.id} name={track.name} artist={track.artist} album={track.album}/>
+          )
+        )
+      }
     </div>
   )
 }
