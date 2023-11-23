@@ -3,10 +3,10 @@ import SearchResult from "./SearchResult"
 
 import '../styles/AppPlaylist.css'
 
-function AppPlaylist() {
+function AppPlaylist({ searchSong }) {
   return (
     <div className="app-playlist">
-      <SearchResult />
+      <SearchResult searchSong={searchSong} />
       <PlayList />
     </div>
   )

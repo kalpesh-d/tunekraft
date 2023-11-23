@@ -2,15 +2,15 @@ import Track from './Track'
 
 import '../styles/TrackList.css'
 
-function TrackList({ searchTrack }) {
+function TrackList({ data, searchSong }) { 
   return (
     <div className='tracklist'>
       { 
-        searchTrack && searchTrack.map(
-          track => ( 
+        data &&
+        data.filter(trackSearch => (trackSearch.name.toLowerCase().includes(searchSong)))
+        .map(track => ( 
             <Track key={track.id} name={track.name} artist={track.artist} album={track.album}/>
-          )
-        )
+        ))
       }
     </div>
   )
