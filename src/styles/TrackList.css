@@ -20,3 +20,8 @@
 .tracklist::-webkit-scrollbar-thumb:hover {
   background: black; 
 }
+
+.error {
+  text-align: center;
+  font-weight: 500;
+}
