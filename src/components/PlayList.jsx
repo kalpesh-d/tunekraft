@@ -15,7 +15,7 @@ function PlayList() {
       <form action="">
         <input className="playlist-name" type="text" placeholder="Enter Playlist Name" value={playlist} onChange={handlePlaylist} />
         <TrackList />
-        <button className="savebtn" disabled>save to spotify</button>
+        <button className="savebtn">save to spotify</button>
       </form>
     </div>
   )

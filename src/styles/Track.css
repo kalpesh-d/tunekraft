@@ -24,4 +24,9 @@
     color: white;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+}
+
+.track-plus:active {
+    color: #cccccc;
 }
