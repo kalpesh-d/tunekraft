@@ -2,7 +2,7 @@ import Track from "./Track";
 
 import "../styles/TrackList.css";
 
-function TrackList({ data, searchSong, error }) {
+function TrackList({ data, searchSong, error, addToPlaylist }) {
   const filteredData = data?.filter((track) =>
     track.name.toLowerCase().includes(searchSong.toLowerCase())
   );
@@ -13,10 +13,12 @@ function TrackList({ data, searchSong, error }) {
       {filteredData &&
         filteredData.map((track) => (
           <Track
+            track={track}
             key={track.id}
             name={track.name}
             artist={track.artist}
             album={track.album}
+            addToPlaylist={addToPlaylist}
           />
         ))}
     </div>

@@ -1,11 +1,16 @@
 import "../styles/SearchResult.css";
 import TrackList from "./TrackList";
 
-function SearchResult({ searchSong, data, error }) {
+function SearchResult({ searchSong, data, error, addToPlaylist }) {
   return (
     <div className="search-result">
       <h1>Results</h1>
-      <TrackList data={data} searchSong={searchSong} error={error} />
+      <TrackList
+        data={data}
+        searchSong={searchSong}
+        error={error}
+        addToPlaylist={addToPlaylist}
+      />
     </div>
   );
 }

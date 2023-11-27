@@ -9,12 +9,19 @@ function App() {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [searchSong, setSearchSong] = useState("");
+  const [playlistTrack, setPlaylistTrack] = useState([]);
 
   useEffect(() => {
     getAll()
       .then((resp) => setData(resp.data))
       .catch((err) => setError(err.message));
-  });
+  }, []);
+
+  const addToPlaylist = (track) => {
+    setPlaylistTrack([...playlistTrack, track]);
+  };
+
+  console.log(playlistTrack);
 
   return (
     <>
@@ -23,7 +30,12 @@ function App() {
       </nav>
       <main>
         <SearchBar setSearchSong={setSearchSong} />
-        <AppPlaylist searchSong={searchSong} data={data} error={error} />
+        <AppPlaylist
+          searchSong={searchSong}
+          data={data}
+          error={error}
+          addToPlaylist={addToPlaylist}
+        />
       </main>
     </>
   );

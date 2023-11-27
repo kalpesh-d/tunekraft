@@ -1,15 +1,17 @@
 import "../styles/Track.css";
 
-function Track({ name, artist, album }) {
+function Track({ track, addToPlaylist }) {
   return (
     <div className="track">
       <div className="track-content">
-        <h3 className="track-title">{name}</h3>
+        <h3 className="track-title">{track.name}</h3>
         <p className="track-artist">
-          {artist} | {album}
+          {track.artist} | {track.album}
         </p>
       </div>
-      <button className="track-plus">+</button>
+      <button className="track-plus" onClick={() => addToPlaylist(track)}>
+        +
+      </button>
     </div>
   );
 }

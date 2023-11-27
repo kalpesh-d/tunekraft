@@ -1,24 +1,32 @@
 import { useState } from "react";
 import TrackList from "./TrackList";
 
-import '../styles/PlayList.css'
+import "../styles/Playlist.css";
 
-function PlayList() {
-  const [playlist, setPlaylist] = useState('')
+function Playlist() {
+  const [playlistName, setPlaylistName] = useState("");
 
   const handlePlaylist = (e) => {
-    setPlaylist(e.target.value)
-  }
+    setPlaylistName(e.target.value);
+  };
 
   return (
     <div className="playlist">
       <form action="">
-        <input className="playlist-name" type="text" placeholder="Enter Playlist Name" value={playlist} onChange={handlePlaylist} />
+        <input
+          className="playlist-name"
+          type="text"
+          placeholder="Enter Playlist Name"
+          value={playlistName}
+          onChange={handlePlaylist}
+        />
         <TrackList />
-        <button className="savebtn">save to spotify</button>
+        <button className="savebtn" onClick={handlePlaylist}>
+          save to spotify
+        </button>
       </form>
     </div>
-  )
+  );
 }
 
-export default PlayList
+export default Playlist;
