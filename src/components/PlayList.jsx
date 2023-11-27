@@ -3,10 +3,11 @@ import TrackList from "./TrackList";
 
 import "../styles/Playlist.css";
 
-function Playlist() {
+function Playlist({ playlistTrack }) {
   const [playlistName, setPlaylistName] = useState("");
 
   const handlePlaylist = (e) => {
+    e.preventDefault();
     setPlaylistName(e.target.value);
   };
 
@@ -20,7 +21,7 @@ function Playlist() {
           value={playlistName}
           onChange={handlePlaylist}
         />
-        <TrackList />
+        <TrackList data={playlistTrack} />
         <button className="savebtn" onClick={handlePlaylist}>
           save to spotify
         </button>

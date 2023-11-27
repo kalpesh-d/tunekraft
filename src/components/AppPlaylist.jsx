@@ -1,9 +1,15 @@
-import Playlist from "./Playlist";
+import Playlist from "./PlayList";
 import SearchResult from "./SearchResult";
 
 import "../styles/AppPlaylist.css";
 
-function AppPlaylist({ searchSong, data, error, addToPlaylist }) {
+function AppPlaylist({
+  searchSong,
+  data,
+  error,
+  addToPlaylist,
+  playlistTrack,
+}) {
   return (
     <div className="app-playlist">
       <SearchResult
@@ -12,7 +18,7 @@ function AppPlaylist({ searchSong, data, error, addToPlaylist }) {
         error={error}
         addToPlaylist={addToPlaylist}
       />
-      <Playlist />
+      <Playlist playlistTrack={playlistTrack} />
     </div>
   );
 }

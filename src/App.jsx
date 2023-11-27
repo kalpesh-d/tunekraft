@@ -39,6 +39,7 @@ function App() {
           data={data}
           error={error}
           addToPlaylist={addToPlaylist}
+          playlistTrack={playlistTrack}
         />
       </main>
     </>
