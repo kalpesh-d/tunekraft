@@ -18,7 +18,11 @@ function App() {
   }, []);
 
   const addToPlaylist = (track) => {
-    setPlaylistTrack([...playlistTrack, track]);
+    const isTrackInPlaylist = playlistTrack.some(
+      (playlistTrack) => playlistTrack.id === track.id
+    );
+
+    !isTrackInPlaylist && setPlaylistTrack([...playlistTrack, track]);
   };
 
   console.log(playlistTrack);
