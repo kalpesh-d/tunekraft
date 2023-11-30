@@ -23,22 +23,12 @@ const getAll = async (trackName) => {
   let accessToken = await getAccessToken();
 
   if(trackName) {
-    const trackIdResponse = await axios.get(endPoint + '/search?q=' + trackName + '&type=track', {
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': `Bearer ${accessToken}`,
-      },
-    });
-    
-    const trackId = trackIdResponse.data.tracks.items[0].id;
-    
-    const response = await axios.get(endPoint + '/tracks/' + trackId, {
+    const response = await axios.get(`${endPoint}/search?q=${trackName}&type=album,track,artist&limit=10`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
     });
-
     return response;
   } else {
     const response = await axios.get(`${endPoint}/recommendations?limit=10&seed_genres=pop`, {

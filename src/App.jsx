@@ -13,8 +13,13 @@ function App() {
   useEffect(() => {
     getAll(searchSong)
       .then((resp) => {
-        setData(resp.data.tracks);
-        // console.log(resp.data.tracks);
+        if (resp.data.tracks.items) {
+          setData(resp.data.tracks.items);
+          console.log(resp.data.tracks.items);
+        } else {
+          setData(resp.data.tracks);
+          console.log(resp.data.tracks);
+        }
       })
       .catch((err) => console.log(err));
   }, [searchSong]);
