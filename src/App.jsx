@@ -14,7 +14,7 @@ function App() {
     getAll(searchSong)
       .then((resp) => {
         setData(resp.data.tracks);
-        console.log(resp.data.tracks);
+        // console.log(resp.data.tracks);
       })
       .catch((err) => console.log(err));
   }, [searchSong]);
@@ -35,7 +35,6 @@ function App() {
       <main>
         <SearchBar setSearchSong={setSearchSong} />
         <AppPlaylist
-          searchSong={searchSong}
           data={data}
           addToPlaylist={addToPlaylist}
           playlistTrack={playlistTrack}

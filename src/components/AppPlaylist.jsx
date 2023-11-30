@@ -3,14 +3,10 @@ import SearchResult from "./SearchResult";
 
 import "../styles/AppPlaylist.css";
 
-function AppPlaylist({ searchSong, data, addToPlaylist, playlistTrack }) {
+function AppPlaylist({ data, addToPlaylist, playlistTrack }) {
   return (
     <div className="app-playlist">
-      <SearchResult
-        searchSong={searchSong}
-        data={data}
-        addToPlaylist={addToPlaylist}
-      />
+      <SearchResult data={data} addToPlaylist={addToPlaylist} />
       <Playlist playlistTrack={playlistTrack} />
     </div>
   );

@@ -41,7 +41,7 @@ const getAll = async (trackName) => {
 
     return response;
   } else {
-    const response = await axios.get(endPoint + '/recommendations?' + 'limit=10&market=IN' + '&seed_genres=hiphop,country', {
+    const response = await axios.get(`${endPoint}/recommendations?limit=10&seed_genres=pop`, {
       headers: {
         "Content-Type": "application/json",
         'Authorization': `Bearer ${accessToken}`,
