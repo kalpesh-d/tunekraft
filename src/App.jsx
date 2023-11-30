@@ -7,15 +7,17 @@ import getAll from "./Services/track";
 
 function App() {
   const [data, setData] = useState([]);
-  const [error, setError] = useState("");
   const [searchSong, setSearchSong] = useState("");
   const [playlistTrack, setPlaylistTrack] = useState([]);
 
   useEffect(() => {
-    getAll()
-      .then((resp) => setData(resp.data))
-      .catch((err) => setError(err.message));
-  }, []);
+    getAll(searchSong)
+      .then((resp) => {
+        setData(resp.data.tracks);
+        console.log(resp.data.tracks);
+      })
+      .catch((err) => console.log(err));
+  }, [searchSong]);
 
   const addToPlaylist = (track) => {
     const isTrackInPlaylist = playlistTrack.some(
@@ -24,8 +26,6 @@ function App() {
 
     !isTrackInPlaylist && setPlaylistTrack([...playlistTrack, track]);
   };
-
-  console.log(playlistTrack);
 
   return (
     <>
@@ -37,7 +37,6 @@ function App() {
         <AppPlaylist
           searchSong={searchSong}
           data={data}
-          error={error}
           addToPlaylist={addToPlaylist}
           playlistTrack={playlistTrack}
         />
