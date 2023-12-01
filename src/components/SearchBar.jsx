@@ -1,8 +1,8 @@
 import "../styles/SearchBar.css";
 
-function SearchBar({ setSearchSong }) {
+function SearchBar({ setSearchTrack }) {
   const handleSearch = (e) => {
-    setSearchSong(e.target.value);
+    setSearchTrack(e.target.value);
   };
 
   return (

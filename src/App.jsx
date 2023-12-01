@@ -5,10 +5,17 @@ import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import getAll from "./Services/track";
 
+const retriveLocalTrack = () => {
+  const storedPlaylistTrack = localStorage.getItem("playlistTrack");
+  if (storedPlaylistTrack) {
+    return JSON.parse(storedPlaylistTrack);
+  }
+};
+
 function App() {
   const [data, setData] = useState([]);
   const [searchTrack, setSearchTrack] = useState("");
-  const [playlistTrack, setPlaylistTrack] = useState([]);
+  const [playlistTrack, setPlaylistTrack] = useState(retriveLocalTrack);
 
   useEffect(() => {
     getAll(searchTrack)
@@ -21,6 +28,10 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, [searchTrack]);
+
+  useEffect(() => {
+    localStorage.setItem("playlistTrack", JSON.stringify(playlistTrack));
+  }, [playlistTrack]);
 
   const addToPlaylist = (track) => {
     const isTrackInPlaylist = playlistTrack.some(
