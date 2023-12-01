@@ -1,9 +1,9 @@
 import "../styles/SearchResult.css";
 import TrackList from "./TrackList";
 
-function SearchResult({ data, addToPlaylist, searchSong }) {
+function SearchResult({ data, addToPlaylist, searchTrack }) {
   const result =
-    searchSong.length > 0 ? `Result "${searchSong}"` : "Recommendation";
+    searchTrack.length > 0 ? `Result "${searchTrack}"` : "Recommendation";
 
   return (
     <div className="search-result">

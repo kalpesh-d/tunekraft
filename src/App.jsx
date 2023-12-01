@@ -7,22 +7,20 @@ import getAll from "./Services/track";
 
 function App() {
   const [data, setData] = useState([]);
-  const [searchSong, setSearchSong] = useState("");
+  const [searchTrack, setSearchTrack] = useState("");
   const [playlistTrack, setPlaylistTrack] = useState([]);
 
   useEffect(() => {
-    getAll(searchSong)
+    getAll(searchTrack)
       .then((resp) => {
         if (resp.data.tracks.items) {
           setData(resp.data.tracks.items);
-          console.log(resp.data.tracks.items);
         } else {
           setData(resp.data.tracks);
-          console.log(resp.data.tracks);
         }
       })
       .catch((err) => console.log(err));
-  }, [searchSong]);
+  }, [searchTrack]);
 
   const addToPlaylist = (track) => {
     const isTrackInPlaylist = playlistTrack.some(
@@ -38,10 +36,10 @@ function App() {
         <NavBar />
       </nav>
       <main>
-        <SearchBar setSearchSong={setSearchSong} />
+        <SearchBar setSearchTrack={setSearchTrack} />
         <AppPlaylist
           data={data}
-          searchSong={searchSong}
+          searchTrack={searchTrack}
           addToPlaylist={addToPlaylist}
           playlistTrack={playlistTrack}
         />
