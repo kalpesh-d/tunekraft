@@ -41,6 +41,7 @@ function App() {
         <SearchBar setSearchSong={setSearchSong} />
         <AppPlaylist
           data={data}
+          searchSong={searchSong}
           addToPlaylist={addToPlaylist}
           playlistTrack={playlistTrack}
         />
