@@ -3,7 +3,7 @@ import TrackList from "./TrackList";
 import retrieveFromSession from "../util/retrieveFromSession";
 import "../styles/Playlist.css";
 
-function Playlist({ playlistTrack }) {
+function Playlist({ playlistTrack, isInPlaylist, removeFromPlaylist }) {
   const [playlistName, setPlaylistName] = useState(retrieveFromSession("Name"));
 
   const handlePlaylist = (e) => {
@@ -25,7 +25,11 @@ function Playlist({ playlistTrack }) {
           value={playlistName}
           onChange={handlePlaylist}
         />
-        <TrackList data={playlistTrack} />
+        <TrackList
+          data={playlistTrack}
+          isInPlaylist={isInPlaylist}
+          removeFromPlaylist={removeFromPlaylist}
+        />
         <button className="savebtn" onClick={handlePlaylist}>
           save to spotify
         </button>

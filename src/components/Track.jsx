@@ -1,9 +1,18 @@
 import "../styles/Track.css";
 
-function Track({ track, addToPlaylist }) {
+function Track({ track, addToPlaylist, isInPlaylist, removeFromPlaylist }) {
   const artistNames = track.artists.map((artist) => artist.name);
   const artistString =
     artistNames.length > 1 ? artistNames.join(", ") : artistNames[0];
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (isInPlaylist) {
+      removeFromPlaylist(track.id);
+    } else {
+      addToPlaylist(track);
+    }
+  };
 
   return (
     <div className="track">
@@ -13,8 +22,8 @@ function Track({ track, addToPlaylist }) {
           {artistString} | {track.album.name}
         </p>
       </div>
-      <button className="track-plus" onClick={() => addToPlaylist(track)}>
-        +
+      <button className="track-plus" onClick={handleClick}>
+        {isInPlaylist ? "-" : "+"}
       </button>
     </div>
   );

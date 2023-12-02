@@ -1,8 +1,7 @@
 import Track from "./Track";
-
 import "../styles/TrackList.css";
 
-function TrackList({ data, addToPlaylist }) {
+function TrackList({ data, addToPlaylist, isInPlaylist, removeFromPlaylist }) {
   return (
     <div className="tracklist">
       {data &&
@@ -14,6 +13,8 @@ function TrackList({ data, addToPlaylist }) {
             artist={track.artists[0].name}
             album={track.album}
             addToPlaylist={addToPlaylist}
+            isInPlaylist={isInPlaylist}
+            removeFromPlaylist={removeFromPlaylist}
           />
         ))}
     </div>

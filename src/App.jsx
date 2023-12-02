@@ -37,6 +37,12 @@ function App() {
     !isTrackInPlaylist && setPlaylistTrack([...playlistTrack, track]);
   };
 
+  const removeFromPlaylist = (trackId) => {
+    const updatedData = playlistTrack.filter((track) => track.id !== trackId);
+    setPlaylistTrack(updatedData);
+    sessionStorage.setItem("Playlist", JSON.stringify(updatedData));
+  };
+
   return (
     <>
       <nav>
@@ -49,6 +55,7 @@ function App() {
           searchTrack={searchTrack}
           addToPlaylist={addToPlaylist}
           playlistTrack={playlistTrack}
+          removeFromPlaylist={removeFromPlaylist}
         />
       </main>
     </>

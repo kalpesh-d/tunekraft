@@ -1,32 +1,32 @@
 .track {
-    padding: 1rem 0;
-    border-bottom: 1px solid white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .track-title {
-    font-size: 2rem;
-    font-weight: 500;
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 .track-artist {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .track-plus {
-    font-size: 2.5rem;
-    font-weight: 400;
-    padding-right: 3rem;
-    color: white;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+  font-size: 2.5rem;
+  font-weight: 400;
+  padding-right: 2.5rem;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .track-plus:active {
-    color: #cccccc;
+  color: #cccccc;
 }
