@@ -9,27 +9,32 @@ const clientSecret = "b2a09442ff1044cf9b033af77cf13b97";
 
 const getAll = async (searchTrack) => {
   let accessToken = await getAccessToken(endPointToken, clientId, clientSecret);
-  
+
   const HEADER = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${accessToken}`,
-  }
-  
-  if(searchTrack) {
-    const response = await axios.get(`${endPoint}/search?q=${searchTrack}&type=album,track,artist&limit=10`, {
-      headers: HEADER,
-    });
-    return response;
-  } 
-  else {
-    // To avoid requesting api of recommendation tracks when the page re-renders 
-    if(sessionStorage.getItem('Recommendations')) {
-      return retrieveFromSession('Recommendations'); // recommendations track from sessionStorage 
-    } else {
-      const response = await axios.get(`${endPoint}/recommendations?limit=10&seed_genres=pop`, {
+  };
+
+  if (searchTrack) {
+    const response = await axios.get(
+      `${endPoint}/search?q=${searchTrack}&type=album,track,artist&limit=10`,
+      {
         headers: HEADER,
-      })
-      sessionStorage.setItem('Recommendations', JSON.stringify(response))
+      }
+    );
+    return response;
+  } else {
+    // To avoid requesting api of recommendation tracks when the page re-renders
+    if (sessionStorage.getItem("Recommendations")) {
+      return retrieveFromSession("Recommendations"); // recommendations track from sessionStorage
+    } else {
+      const response = await axios.get(
+        `${endPoint}/recommendations?limit=10&seed_genres=pop`,
+        {
+          headers: HEADER,
+        }
+      );
+      sessionStorage.setItem("Recommendations", JSON.stringify(response));
       return response; // From api
     }
   }

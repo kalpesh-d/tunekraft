@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import TrackList from "./TrackList";
-
-import "../styles/Playlist.css";
 import retrieveFromSession from "../util/retrieveFromSession";
+import "../styles/Playlist.css";
 
 function Playlist({ playlistTrack }) {
   const [playlistName, setPlaylistName] = useState(retrieveFromSession("Name"));
