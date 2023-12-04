@@ -38,9 +38,13 @@ function App() {
   };
 
   const removeFromPlaylist = (trackId) => {
-    const updatedData = playlistTrack.filter((track) => track.id !== trackId);
-    setPlaylistTrack(updatedData);
-    sessionStorage.setItem("Playlist", JSON.stringify(updatedData));
+    setPlaylistTrack((prevPlaylistTrack) => {
+      const updatedData = prevPlaylistTrack.filter(
+        (track) => !trackId.includes(track.id)
+      );
+      sessionStorage.setItem("Playlist", JSON.stringify(updatedData));
+      return updatedData;
+    });
   };
 
   return (
