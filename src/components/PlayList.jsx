@@ -3,9 +3,12 @@ import TrackList from "./TrackList";
 import retrieveFromSession from "../util/retrieveFromSession";
 import "../styles/Playlist.css";
 import { PostPlaylist } from "../services/postPlaylist";
+import { useAppContext } from "../context/AppContext";
+import { alertFunciton } from "../util/alertFunction";
 
-function Playlist({ playlistTrack, isInPlaylist, removeFromPlaylist }) {
+function Playlist({ isInPlaylist }) {
   const [playlistName, setPlaylistName] = useState(retrieveFromSession("Name"));
+  const { removeFromPlaylist, playlistTrack } = useAppContext();
 
   const handlePlaylist = (e) => {
     e.preventDefault();
@@ -14,36 +17,27 @@ function Playlist({ playlistTrack, isInPlaylist, removeFromPlaylist }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (playlistName.trim() === "") {
-      alert("Please enter a playlist name.");
-      return;
-    }
-
-    if (playlistTrack.length === 0) {
-      alert("Your playlist is empty. Add tracks before saving.");
-      return;
-    }
-
     const trackIds = playlistTrack.map((track) => track.id);
 
-    try {
-      await PostPlaylist(playlistName, trackIds);
+    const executePost = alertFunciton(playlistName, playlistTrack);
+    executePost && alert(executePost); // execute only when its return string
 
+    if (!executePost) {
+      // when there's no validation issue
+      await PostPlaylist(playlistName, trackIds);
       setPlaylistName("");
       removeFromPlaylist(trackIds);
-    } catch (error) {
-      console.error("Error saving playlist:", error);
     }
   };
 
   useEffect(() => {
     sessionStorage.setItem("Name", JSON.stringify(playlistName));
-  }, [playlistName]);
+    sessionStorage.setItem("Playlist", JSON.stringify(playlistTrack));
+  }, [playlistName, playlistTrack]);
 
   return (
     <div className="playlist">
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <input
           className="playlist-name"
           type="text"
@@ -51,12 +45,8 @@ function Playlist({ playlistTrack, isInPlaylist, removeFromPlaylist }) {
           value={playlistName}
           onChange={handlePlaylist}
         />
-        <TrackList
-          data={playlistTrack}
-          isInPlaylist={isInPlaylist}
-          removeFromPlaylist={removeFromPlaylist}
-        />
-        <button className="savebtn" onClick={handleSubmit}>
+        <TrackList data={playlistTrack} isInPlaylist={isInPlaylist} />
+        <button className="savebtn" type="submit">
           save to spotify
         </button>
       </form>

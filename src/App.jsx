@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import AppPlaylist from "./components/AppPlaylist";
 import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import getAll from "./services/track";
-import retrieveFromSession from "./util/retrieveFromSession";
+import { useAppContext } from "./context/AppContext";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [searchTrack, setSearchTrack] = useState("");
-  const [playlistTrack, setPlaylistTrack] = useState(
-    retrieveFromSession("Playlist")
-  );
+  const { setData, searchTrack, setSearchTrack } = useAppContext();
 
   useEffect(() => {
     getAll(searchTrack)
@@ -23,29 +19,7 @@ function App() {
         }
       })
       .catch((err) => console.log(err));
-  }, [searchTrack]);
-
-  useEffect(() => {
-    sessionStorage.setItem("Playlist", JSON.stringify(playlistTrack));
-  }, [playlistTrack]);
-
-  const addToPlaylist = (track) => {
-    const isTrackInPlaylist = playlistTrack.some(
-      (playlistTrack) => playlistTrack.id === track.id
-    );
-
-    !isTrackInPlaylist && setPlaylistTrack([...playlistTrack, track]);
-  };
-
-  const removeFromPlaylist = (trackId) => {
-    setPlaylistTrack((prevPlaylistTrack) => {
-      const updatedData = prevPlaylistTrack.filter(
-        (track) => !trackId.includes(track.id)
-      );
-      sessionStorage.setItem("Playlist", JSON.stringify(updatedData));
-      return updatedData;
-    });
-  };
+  }, [searchTrack, setData]);
 
   return (
     <>
@@ -54,13 +28,7 @@ function App() {
       </nav>
       <main>
         <SearchBar setSearchTrack={setSearchTrack} />
-        <AppPlaylist
-          data={data}
-          searchTrack={searchTrack}
-          addToPlaylist={addToPlaylist}
-          playlistTrack={playlistTrack}
-          removeFromPlaylist={removeFromPlaylist}
-        />
+        <AppPlaylist />
       </main>
     </>
   );

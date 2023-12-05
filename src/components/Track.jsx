@@ -1,6 +1,9 @@
+import { useAppContext } from "../context/AppContext";
 import "../styles/Track.css";
 
-function Track({ track, addToPlaylist, isInPlaylist, removeFromPlaylist }) {
+function Track({ track, isInPlaylist }) {
+  const { addToPlaylist, removeFromPlaylist } = useAppContext();
+
   const artistNames = track.artists.map((artist) => artist.name);
   const artistString =
     artistNames.length > 1 ? artistNames.join(", ") : artistNames[0];

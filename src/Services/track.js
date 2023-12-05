@@ -3,7 +3,7 @@ import getAccessToken from "./accessToken";
 import retrieveFromSession from "../util/retrieveFromSession";
 
 export const endPoint = "https://api.spotify.com/v1";
-const clientId = "c18250df7ccd42e583fdb1daa7dc9f16";
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 
 export let accessToken = getAccessToken(clientId);
 
