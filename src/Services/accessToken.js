@@ -32,7 +32,12 @@ const getAccessToken = (clientId) => {
     return accessToken;
   } else {
     // No valid token in storage or URL, redirect for authentication
-    redirectToSpotifyAuth(clientId);
+    const shouldAuthenticate = window.confirm(
+      `Copy this email and password. You'll be redirected to Spotify Login page, If you are already logged into Spotify, please log out and use this instead. \n\nEmail : Password \nrogot80797@getmola.com : test@123`
+    );
+    if (shouldAuthenticate) {
+      redirectToSpotifyAuth(clientId);
+    }
   }
 };
 

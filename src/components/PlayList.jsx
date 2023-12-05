@@ -36,20 +36,18 @@ function Playlist({ isInPlaylist }) {
   }, [playlistName, playlistTrack]);
 
   return (
-    <div className="playlist">
-      <form onSubmit={handleSubmit}>
-        <input
-          className="playlist-name"
-          type="text"
-          placeholder="Enter Playlist Name"
-          value={playlistName}
-          onChange={handlePlaylist}
-        />
-        <TrackList data={playlistTrack} isInPlaylist={isInPlaylist} />
-        <button className="savebtn" type="submit">
-          save to spotify
-        </button>
-      </form>
+    <div className="playlist" onSubmit={handleSubmit}>
+      <input
+        className="playlist-name"
+        type="text"
+        placeholder="Enter Playlist Name"
+        value={playlistName}
+        onChange={handlePlaylist}
+      />
+      <TrackList data={playlistTrack} isInPlaylist={isInPlaylist} />
+      <button className="savebtn" type="submit" onClick={handleSubmit}>
+        save to spotify
+      </button>
     </div>
   );
 }
