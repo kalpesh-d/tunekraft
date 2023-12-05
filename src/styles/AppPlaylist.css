@@ -1,6 +1,13 @@
 .app-playlist {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    gap: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .app-playlist {
+    flex-direction: column;
+    align-items: center;
+  }
 }

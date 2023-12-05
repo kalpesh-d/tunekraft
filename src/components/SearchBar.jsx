@@ -9,12 +9,9 @@ function SearchBar({ setSearchTrack }) {
     <div className="search-bar">
       <input
         type="text"
-        placeholder="Enter a Song Title"
+        placeholder="Search Track, Album or Artist"
         onChange={handleSearch}
       />
-      <button className="search-btn" onClick={handleSearch}>
-        Search
-      </button>
     </div>
   );
 }
