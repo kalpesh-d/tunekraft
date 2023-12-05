@@ -34,7 +34,7 @@ const getAccessToken = (clientId) => {
     // No valid token in storage or URL, redirect for authentication
     const emailNpass = "rogot80797@getmola.com : test@123";
     const shouldAuthenticate = prompt(
-      `Copy this email and password. You'll be redirected to Spotify Login page, If you are already logged into Spotify, please log out and use this instead. \n\nEmail : Password \n`,
+      `Copy this email and password. Then you'll be redirected to Spotify Login page, If you are already logged in to your Spotify account, please log out and use this instead. \n\nEmail : Password`,
       emailNpass
     );
     if (shouldAuthenticate) {
