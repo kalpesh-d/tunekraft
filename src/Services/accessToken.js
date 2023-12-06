@@ -1,4 +1,5 @@
 const redirectURI = "http://localhost:5173/";
+// const redirectURI = "https://tunecraft.netlify.app/";
 
 const getAccessToken = (clientId) => {
   const storedToken = localStorage.getItem("accessToken");
@@ -45,6 +46,7 @@ const getAccessToken = (clientId) => {
 
 const redirectToSpotifyAuth = (clientId) => {
   const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
+
   window.location = accessUrl;
 };
 

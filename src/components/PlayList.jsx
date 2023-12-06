@@ -9,6 +9,7 @@ import { alertFunciton } from "../util/alertFunction";
 function Playlist({ isInPlaylist }) {
   const [playlistName, setPlaylistName] = useState(retrieveFromSession("Name"));
   const { removeFromPlaylist, playlistTrack } = useAppContext();
+  const [loading, setLoading] = useState(false);
 
   const handlePlaylist = (e) => {
     e.preventDefault();
@@ -23,10 +24,20 @@ function Playlist({ isInPlaylist }) {
     executePost && alert(executePost); // execute only when its return string
 
     if (!executePost) {
-      // when there's no validation issue
-      await PostPlaylist(playlistName, trackIds);
-      setPlaylistName("");
-      removeFromPlaylist(trackIds);
+      try {
+        // when there's no validation issue
+        setLoading(true);
+        await PostPlaylist(playlistName, trackIds);
+
+        setPlaylistName("");
+        removeFromPlaylist(trackIds);
+        alert("Check Spotify, Playlist is saved!");
+      } catch (error) {
+        console.error("Error saving to Spotify:", error);
+      } finally {
+        // Stop loading, whether the request was successful or not
+        setLoading(false);
+      }
     }
   };
 
@@ -46,7 +57,8 @@ function Playlist({ isInPlaylist }) {
       />
       <TrackList data={playlistTrack} isInPlaylist={isInPlaylist} />
       <button className="savebtn" type="submit" onClick={handleSubmit}>
-        save to spotify
+        {/* save to spotify */}
+        {loading ? "Saving..." : "Save to Spotify"}
       </button>
     </div>
   );
